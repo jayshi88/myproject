@@ -14,13 +14,13 @@ var connection = mysql.createConnection ( {
 
 });
 
+var testQuery = function(webRespondFunc) {
 
-
-    connection.connect(function (err) {
-        if (err) {
-            console.log("error connecting." + err);
-        }
-    });
+    // connection.connect(function (err) {
+    //     if (err) {
+    //         console.log("error connecting." + err);
+    //     }
+    // });
 
 connection.query(`SELECT n.NameID, n.MedName, innerQueryResultTable.Mechanism
                     FROM namez n
@@ -35,13 +35,16 @@ connection.query(`SELECT n.NameID, n.MedName, innerQueryResultTable.Mechanism
         if (!err) {
     //nodejs print object using module of "util"-built in nodejs package
             console.log("The solution is: " +util.inspect(rows));
-                        
+            webRespondFunc(rows);
         } else {
             console.log("error while performing query." + err);
         }
        
     });
 
-     connection.end();
+     //connection.end();
+}
 
-
+module.exports = {
+    testQueryOutside: testQuery
+}

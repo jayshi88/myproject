@@ -1,0 +1,19 @@
+<html>
+    <head>
+    <title> <%= title %> </title>
+    </head>
+
+    <body>
+        <h1>
+            <% if (rows.length>0) { %>
+            <%= rows[0].Mechanism %>
+           <% } %>
+        </h1>
+<!--EJS is a little wuss please be aware of spacing between the syntax  -->
+           <ul>
+            <% for(var i=0; i<rows.length; i++) {%>
+                  <li><%= rows[i].NameID + " - "+rows[i].MedName  %></li>
+            <% } %>
+            </ul>
+    </body>
+</html>
