@@ -8,27 +8,17 @@
 
 <body>
     <h1>
-        <% if (rows1.length>0) { %>
-            <%= rows1[0].Mechanism %>
-                <% } %>
+            <%= mechName %>
     </h1>
 
     <!--EJS is a little wuss please be aware of spacing between the syntax  -->
     <ul>
-        <% for(var i=0; i<rows1.length && i<5; i++) { %>
+        <% for(var i=0; i<listMe.length; i++) { %>
             <li>
-                <%= rows1[i].NameID + " - "+rows1[i].MedName  %>
+                <%= listMe[i].NameID + " - "+listMe[i].MedName  %>
             </li>
             <% } %>
-    </ul>
-    <h1>List of Distractor Medications</h1>
-    <ul>
-        <% for (var i=0; i<rows2.length; i++) { %>
-            <li>
-                <%= rows2[i].MedName  %>
-            </li>
-        <% } %>
-    </ul>
+     </ul>
 </body>
 
 </html>

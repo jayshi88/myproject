@@ -14,8 +14,10 @@ var connection = mysql.createConnection({
 
 });
 
+//testQuery is the variable that represents the function we have created
+//to make a query to the database to find out answers to our question
 var testQuery = function (webRespondFunc) {
-
+    
     connection.query(`SELECT n.NameID, n.MedName, innerQueryResultTable.Mechanism
                     FROM namez n
                     INNER JOIN name_mechanism nm
@@ -38,6 +40,8 @@ var testQuery = function (webRespondFunc) {
 
 }
 
+// distractQuery is the function that houses our queries that specifies a list of
+// distraction choices that were not previously displayed in the testQuery
 
 var distractQuery = function (webDistractFunc, nameIDSubstractList) {
 
@@ -52,7 +56,7 @@ var distractQuery = function (webDistractFunc, nameIDSubstractList) {
     connection.query(newThing, function (err, rows, fields) {
         if (!err) {
             //nodejs print object using module of "util"-built in nodejs package
-            console.log("The solution is: " + util.inspect(rows));
+            console.log("Answer be: " + util.inspect(rows));
             webDistractFunc(rows);
         } else {
             console.log("error while performing query." + err);

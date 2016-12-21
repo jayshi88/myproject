@@ -1,0 +1,6 @@
+SELECT n.MedName, n.NameID
+FROM namez n
+WHERE n.NameID
+NOT IN (73, 349, 244, 283)
+ORDER BY RAND()
+LIMIT 5;
