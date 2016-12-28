@@ -1,0 +1,60 @@
+<!doctype html>
+<meta charset='utf-8'>
+<link rel="shortcut icon" href="favicon.ico">
+<link href='dist/dragula.css' rel='stylesheet' type='text/css' />
+<link href='example/example.css' rel='stylesheet' type='text/css' />
+
+<script>
+function _(id){
+   return document.getElementById(id);	
+}
+
+function readDropZone(){
+var rightDefaults
+var i_count=0;
+var all_dropped = [0,0,0,0,0,0,0,0];
+    for(var i=0; i < document.getElementById("right-defaults").children.length; i++){
+		i_count=i_count+1;
+	all_dropped[i]=_("right-defaults").children[i].id;
+    }
+	if((i_count==4)&&(((all_dropped[0])=="object1")||((all_dropped[1])=="object1")||((all_dropped[2])=="object1")||((all_dropped[3])=="object1")||((all_dropped[4])=="object1")||((all_dropped[5])=="object1")||((all_dropped[6])=="object1")||((all_dropped[7])=="object1"))
+	&&(((all_dropped[0])=="object3")||((all_dropped[1])=="object3")||((all_dropped[2])=="object3")||((all_dropped[3])=="object3")||((all_dropped[4])=="object3")||((all_dropped[5])=="object3")||((all_dropped[6])=="object3")||((all_dropped[7])=="object3"))
+	&&(((all_dropped[0])=="object5")||((all_dropped[1])=="object5")||((all_dropped[2])=="object5")||((all_dropped[3])=="object5")||((all_dropped[4])=="object5")||((all_dropped[5])=="object5")||((all_dropped[6])=="object5")||((all_dropped[7])=="object5")))
+	{
+	alert("Congratulations, Your answer is correct!");
+	//alert("You drag-and-dropped :"+ i_count+  "They are: " +all_dropped[0] +all_dropped[1]+ all_dropped[2]+all_dropped[3] );
+	}
+	else{
+	var correctCounter=0;
+	if(((all_dropped[0])=="object1")||((all_dropped[1])=="object1")||((all_dropped[2])=="object1")||((all_dropped[3])=="object1")||((all_dropped[4])=="object1")||((all_dropped[5])=="object1")||((all_dropped[6])=="object1")||((all_dropped[7])=="object1")) correctCounter++;
+	if(((all_dropped[0])=="object3")||((all_dropped[1])=="object3")||((all_dropped[2])=="object3")||((all_dropped[3])=="object3")||((all_dropped[4])=="object3")||((all_dropped[5])=="object3")||((all_dropped[6])=="object3")||((all_dropped[7])=="object3")) correctCounter++;
+	if(((all_dropped[0])=="object5")||((all_dropped[1])=="object5")||((all_dropped[2])=="object5")||((all_dropped[3])=="object5")||((all_dropped[4])=="object5")||((all_dropped[5])=="object5")||((all_dropped[6])=="object5")||((all_dropped[7])=="object5")) correctCounter++;
+
+	
+	alert("There is a total of "+ i_count +" correct answers, you have selected = " + correctCounter+" correct answers.");}	
+}
+</script>
+<div class='examples'>
+  <div class='parent'>
+    
+    <div class='wrapper'>
+      <div id='left-defaults' class='container'>
+        <div id="object1">Doxycycline</div>
+        <div id="object2">Losartan</div>
+        <div id="object3">5-Flurouracil</div>
+        <div id="object4">Metformin</div>
+		<div id="object5">Gentamicin</div>
+		
+        </div>
+      </div>
+	
+      <div id='right-defaults' class='container'>
+     
+      </div>
+    </div>
+  <button onclick="readDropZone()">Submit Answer</button>
+  </div>
+ 
+
+<script src='dist/dragula.js'></script>
+<script src='example/example.min.js'></script>
