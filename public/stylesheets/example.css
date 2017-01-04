@@ -140,15 +140,27 @@ button:hover {
 
 /* dragula-specific example page styles */
 .wrapper {
-  display: table;
+  display: block;
+  background-color: #BF5B94;
+  overflow: auto;
+
 }
 .container {
   display: table-cell;
   background-color: rgba(255, 255, 255, 0.2);
   width: 300px;
   height: 400px;
+  overflow: auto;
 }
 
+#left-defaults {
+  float: left;
+
+}
+
+#right-defaults {
+  float: right;
+}
 
 .container:nth-child(odd) {
   background-color: rgba(0, 0, 0, 0.2);

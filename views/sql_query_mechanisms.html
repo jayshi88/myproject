@@ -7,39 +7,34 @@
 </head>
 
 <body>
-    <h1>
-            <%= mechName %>
-    </h1>
-<div class='examples'>
-  <div class='parent'>
-    
+    <h1 id='mechanismName'><%= mechName %></h1>
+
+
     <div class='wrapper'>
 
-      <div id='left-defaults' class='container'>
-       <% for(var i=0; i<listMe.length; i++) { %>
-            <div>
-        <%= listMe[i].NameID + "- " +listMe[i].MedName %>
-            </div>
-       <% } %>
+        <div id='left-defaults' class='container'>
+            <% for(var i=0; i<listMe.length; i++) { %>
+                <div><%= listMe[i].MedName %></div>
+                <% } %>
         </div>
 
-      </div>
-	
-      <div id='right-defaults' class='container'>
-     
-      </div>
-    </div>
-  <button onclick="readDropZone()">Submit Answer</button>
-  </div>
 
+        <div id='right-defaults' class='container'></div>
+    </div>
+    <button onclick="verifyAnswer()">Submit Answer</button>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src='/javascripts/dragula.js'></script>
-  <link href='/stylesheets/example.css' rel='stylesheet' type='text/css' />
-    <link href='/stylesheets/dragula.css' rel='stylesheet' type='text/css' />
+<script src='/javascripts/question_counter.js'></script>
+<link href='/stylesheets/example.css' rel='stylesheet' type='text/css' />
+<link href='/stylesheets/dragula.css' rel='stylesheet' type='text/css' />
+
 
 <script type="text/javascript">
-dragula([document.querySelector('#left-defaults'), document.querySelector('#right-defaults')]);
+    dragula([document.querySelector('#left-defaults'), document.querySelector('#right-defaults')]);
 </script>
 
-  
+
 </body>
+
 </html>

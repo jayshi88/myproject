@@ -66,6 +66,9 @@ var distractQuery = function (webDistractFunc, nameIDSubstractList) {
 
 }
 
+
+//add new queries here. 
+
 module.exports = {
     testQueryOutside: testQuery,
     distractQueryOutside: distractQuery
