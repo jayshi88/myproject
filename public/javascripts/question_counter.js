@@ -14,7 +14,8 @@ function verifyAnswer() {
         type: "POST",
         data: payLoad,
         success: function (data, textStatus, jqXHR) {
-            console.log(data, textStatus);
+            console.log(data);
+            $("#userResponse").html("You are " +data.printMessage);
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log(jqXHR, textstatus, errorThrown);
@@ -40,25 +41,5 @@ function findChildrenText(containerID) {
     // console.log(answerList2);
     return answerList2;
 }
-
-
-
-
-
-// function readDropZone () {
-
-//     var totalDropped = document.getElementById("right-defaults").childElementCount;
-
-//     console.log(totalDropped);
-
-// }
-
-
-
-
-
-//  var answers = document.getElementById("div");
-//  var children = answers.children;
-//  console.log(children);
 
 

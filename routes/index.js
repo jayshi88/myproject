@@ -44,11 +44,7 @@ router.get('/', function (req, res, next) {
       }
       completeList = completeList.concat(dataRows2);
       console.log("before shuffle: " + util.inspect(completeList));
-      //the sort function would not randomize the array, however, the function () {return a-b}
-      //called the "compare function" defines an alternative sort order
-      // completeList.sort(function () {
-      //   return 0.5 - Math.random();
-      // });
+
       completeList = shuffle(completeList);
       console.log("after shuffle: " + util.inspect(completeList))
       res.render('sql_query_mechanisms', {

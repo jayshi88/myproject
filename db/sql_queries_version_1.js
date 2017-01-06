@@ -68,8 +68,30 @@ var distractQuery = function (webDistractFunc, nameIDSubstractList) {
 
 
 //add new queries here. 
+//test run query in MYSQL workbench first ;)
+
+
+var validateQuery = function (mechanismFound ,mechanismSearched) {
+    var queryInfo = `SELECT n.MedName, n.NameID
+                    FROM namez n
+                    INNER JOIN name_mechanism nm
+                    ON n.NameID = nm.NameID
+                    INNER JOIN mechanisms m
+                    ON nm.MechanismID = m.MechanismID
+                    WHERE m.Mechanism = "`+ mechanismSearched +`";`;
+            console.log(queryInfo);
+    connection.query(queryInfo, function (err, rows, fields){
+        if (!err) {
+            console.log("Correct answers according to database: " + util.inspect(rows));
+            mechanismFound(rows);
+        } else {
+            console.log("error while doing query." +err);
+        }
+    })
+}
 
 module.exports = {
     testQueryOutside: testQuery,
-    distractQueryOutside: distractQuery
+    distractQueryOutside: distractQuery,
+    validateQueryOutside: validateQuery
 }
