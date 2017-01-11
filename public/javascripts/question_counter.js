@@ -13,6 +13,7 @@ function verifyAnswer() {
         url: "/validateAnswers",
         type: "POST",
         data: payLoad,
+        dataType: "json",
         success: function (data, textStatus, jqXHR) {
             console.log(data);
             $("#userResponse").html("You are " +data.printMessage);
