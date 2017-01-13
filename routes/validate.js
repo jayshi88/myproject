@@ -5,8 +5,32 @@ var sqlFile = require('../db/sql_queries_version_1');
 var util = require('util');
 
 
+function questionCounting(answerList, choosenChoices) {
+    var questionCounter = 0;
+    if (choosenChoices === undefined) {
+        console.log(questionCounter);
+        return 0;
+    } 
+    else if (choosenChoices.constructor !== Array) {
+        selectedAnswers = [choosenChoices]; 
+    }
+    else { selectedAnswers = choosenChoices;
+        }
+    for (var i = 0; i < selectedAnswers.length; i++) {
+        for (var e = 0; e <answerList.length; e++) {
+            if (selectedAnswers[i] === answerList[e]) {
+                questionCounter++;
+            }
+            
+        }
+    }
+    console.log(questionCounter);
+    return questionCounter;
+
+}
 
 function questionAnalyzer(answerList, choosenChoices) {
+    
     var selectedAnswers;
     if (choosenChoices === undefined) {
       return false;
@@ -17,6 +41,8 @@ function questionAnalyzer(answerList, choosenChoices) {
         selectedAnswers = choosenChoices;
     }
     // console.log(selectedAnswers);
+   
+   
     for (var i = 0; i < selectedAnswers.length; i++) {
         var isValidAnswer = false;
         for (var e = 0; e < answerList.length; e++) {
@@ -25,7 +51,6 @@ function questionAnalyzer(answerList, choosenChoices) {
             
             if (selectedAnswers[i] === answerList[e]) {
                 isValidAnswer = true;
-                // console.log("selected answers" + isValidAnswer);
                 break;
             }
 
@@ -34,6 +59,7 @@ function questionAnalyzer(answerList, choosenChoices) {
             return false;
         }
     }
+
     return true;
 };
 
@@ -57,11 +83,11 @@ function unselectedAnalyzer(answerList, notChoosenAnswers) {
         var leftBehindAnswer = false;
         for (var e = 0; e < answerList.length; e++) {
 
-            console.log(unselectedAnswers);
-            console.log(answerList);
+            // console.log(unselectedAnswers);
+            // console.log(answerList);
             if (unselectedAnswers[i] === answerList[e]) {
                 leftBehindAnswer = true;
-                console.log(leftBehindAnswer);
+                // console.log(leftBehindAnswer);
                 break;
             }
         }
@@ -85,8 +111,25 @@ router.post('/', function (req, res, next) {
         var containsNoAnswers = unselectedAnalyzer(answerList, req.body["unselected[]"]);
         console.log(isValidSelectedAnswers, containsNoAnswers);
         var userIsRight = isValidSelectedAnswers && containsNoAnswers;
+        var displayMessage;
+            if (userIsRight === true) {
+                displayMessage = "correct! Nice Job!";
+            } else if (userIsRight === false) {
+                displayMessage = "wrong! Try again!";
+            }
+        
+        var numberCorrect = questionCounting(answerList, req.body["selected[]"]);
+        var totalCorrectAnswers = questionCounting(answerList, req.body["selected[]"]) + questionCounting(answerList, req.body["unselected[]"]);
+        var numberCorrectMessage = "You have selected " +numberCorrect+ "/" +totalCorrectAnswers+ " of the correct Answers.";
+        var addendumMessage = "";
+        if (numberCorrect === totalCorrectAnswers && userIsRight === false) {
+            addendumMessage = "Even though you have selected all the right answers, you also picked one or more wrong choices.";
+        }
+        
         var responseObject = {
-            printMessage: userIsRight
+            printMessage: displayMessage, 
+            secondMessage: numberCorrectMessage,
+            thirdMessage: addendumMessage
         };
         res.send(responseObject);
 

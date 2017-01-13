@@ -16,7 +16,7 @@ function verifyAnswer() {
         dataType: "json",
         success: function (data, textStatus, jqXHR) {
             console.log(data);
-            $("#userResponse").html("You are " +data.printMessage);
+            $("#userResponse").html("You're submission is " +data.printMessage +" <br /> <br /> "+ data.secondMessage + "<br /> <br />" + data.thirdMessage);
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log(jqXHR, textstatus, errorThrown);
