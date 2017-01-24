@@ -20,6 +20,7 @@ function questionCounting(answerList, choosenChoices) {
         for (var e = 0; e <answerList.length; e++) {
             if (selectedAnswers[i] === answerList[e]) {
                 questionCounter++;
+                break;
             }
             
         }

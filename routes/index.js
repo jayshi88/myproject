@@ -35,6 +35,8 @@ router.get('/', function (req, res, next) {
     for (var i = 0; i < dataRows.length; i++) {
       list.push(dataRows[i].NameID);
     }
+      console.log(list);
+      console.log(dataRows);
 
     sqlFile.distractQueryOutside(function (dataRows2) {
 
