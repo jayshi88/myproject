@@ -10,7 +10,7 @@ var connection = mysql.createConnection({
     port: '3306',
     user: 'root',
     password: 'database',
-    database: 'mednode'
+    database: 'testing_db'
 
 });
 
@@ -18,15 +18,15 @@ var connection = mysql.createConnection({
 //to make a query to the database to find out answers to our question
 var testQuery = function (webRespondFunc) {
     
-    connection.query(`SELECT n.NameID, n.MedName, innerQueryResultTable.Mechanism
+    connection.query(`SELECT n.NameID, n.MedName, innerQueryResultTable.sideEffect
                     FROM namez n
-                    INNER JOIN name_mechanism nm
-                    ON n.NameID = nm.NameID
-                    INNER JOIN 
-                    (SELECT m.MechanismID, m.Mechanism
-                    FROM mechanisms m
+                    INNER JOIN name_sideeffects ns
+                    ON n.NameID = ns.NameID
+                    INNER JOIN
+                    (SELECT s.SideEffectsID, s.sideEffect
+                    FROM sideeffects s
                     ORDER BY RAND()
-                    LIMIT 1) innerQueryResultTable ON innerQueryResultTable.MechanismID=nm.MechanismID`,
+                    LIMIT 1) innerQueryResultTable ON innerQueryResultTable.SideEffectsID=ns.SideEffectsID`,
         function (err, rows, fields) {
             if (!err) {
                 //nodejs print object using module of "util"-built in nodejs package
@@ -74,11 +74,11 @@ var distractQuery = function (webDistractFunc, nameIDSubstractList) {
 var validateQuery = function (mechanismFound ,mechanismSearched) {
     var queryInfo = `SELECT n.MedName, n.NameID
                     FROM namez n
-                    INNER JOIN name_mechanism nm
-                    ON n.NameID = nm.NameID
-                    INNER JOIN mechanisms m
-                    ON nm.MechanismID = m.MechanismID
-                    WHERE m.Mechanism = "`+ mechanismSearched +`";`;
+                    INNER JOIN name_sideeffects ns
+                    ON n.NameID = ns.NameID
+                    INNER JOIN sideeffects s
+                    ON ns.SideEffectsID = s.SideEffectsID
+                    WHERE s.sideEffect = "`+ mechanismSearched +`";`;
             console.log(queryInfo);
     connection.query(queryInfo, function (err, rows, fields){
         if (!err) {

@@ -52,7 +52,7 @@ router.get('/', function (req, res, next) {
       res.render('sql_query_mechanisms', {
         title: "testing document",
         listMe: completeList,
-        mechName: dataRows[0].Mechanism
+        mechName: dataRows[0].sideEffect
       });
     }, list);
     //   res.render('sql_query_mechanisms', { title: "Testing Phase", rows: dataRows });

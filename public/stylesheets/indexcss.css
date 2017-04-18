@@ -1,0 +1,88 @@
+html, body, h1, h2, h3, h4, h5, p, ol, ul, li, a {
+	padding: 0;
+	border: 0;
+	margin: 0;
+	font-size: 100%;
+	font: inherit;
+}
+
+body {
+	padding: 50px 0px 50px 0px;
+	font-family: Helvetica, Arial, sans-serif, "Times New Roman";
+}
+
+h1 {
+	
+
+	
+}
+
+h2 {
+	
+}
+
+h3 {
+	
+	
+}
+
+li {
+	list-style-type: none;
+	padding: 15px 15px 15px 15px;
+	border: 3px solid#000000;
+	margin: 5px 0 5px 0;
+	text-align: center;
+}
+
+li a {
+	color: #000000;
+	text-decoration: none;
+
+}
+
+.header {
+	padding: 10px 10px 10px 10px;
+
+}
+
+.main-content {
+
+}
+
+.navigation {
+	margin: 10px 0px 10px 0px;
+}
+.navigation li {
+	width: 20%;
+	margin: 5px auto 5px auto;
+}
+
+.intro {
+	font-size: 26px;
+	text-align: center;
+	font-weight: bold;
+	font-style: normal;
+	text-transform: uppercase;
+}
+
+.selections {
+	background-color: #aeabad;
+	padding: 30px 0px 30px 0px;
+	text-align: center;
+	margin: 20px 0px 20px 0px;
+
+}
+
+.selections a {
+	text-decoration: none;
+	color: #000000;
+}
+
+
+.footer {
+	text-align: center;
+	padding-right: 20px;
+	font-size: 12px;
+	font-style: italic;
+	font-weight: bold;
+}
