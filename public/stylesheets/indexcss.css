@@ -11,26 +11,11 @@ body {
 	font-family: Helvetica, Arial, sans-serif, "Times New Roman";
 }
 
-h1 {
-	
-
-	
-}
-
-h2 {
-	
-}
-
-h3 {
-	
-	
-}
-
 li {
 	list-style-type: none;
 	padding: 15px 15px 15px 15px;
 	border: 3px solid#000000;
-	margin: 5px 0 5px 0;
+	margin: 5px 35% 5px 35%;
 	text-align: center;
 }
 
@@ -45,9 +30,6 @@ li a {
 
 }
 
-.main-content {
-
-}
 
 .navigation {
 	margin: 10px 0px 10px 0px;
