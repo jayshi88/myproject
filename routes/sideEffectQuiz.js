@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 // var dbStuff = require('../db/db');
-var sqlFile = require('../db/sql_queries_mechanism');
+var sqlFile = require('../db/sql_queries_sideEffect');
 var util = require('util');
 
 
@@ -49,10 +49,12 @@ router.get('/', function (req, res, next) {
 
       completeList = shuffle(completeList);
       console.log("after shuffle: " + util.inspect(completeList))
+      
+      //in order to have two separate validate answer processes, I need each of these pages to have a separate rendered document - sql_query_mechanism vs sql_query_sideEffects
       res.render('sql_query_mechanisms', {
         title: "testing document",
         listMe: completeList,
-        mechName: dataRows[0].Mechanism
+        mechName: dataRows[0].sideEffect
       });
     }, list);
     //   res.render('sql_query_mechanisms', { title: "Testing Phase", rows: dataRows });

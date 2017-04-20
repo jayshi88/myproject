@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 // var dbStuff = require('../db/db');
-var sqlFile = require('../db/sql_queries_version_1');
+var sqlFile = require('../db/sql_queries_mechanism');
 var util = require('util');
 
 

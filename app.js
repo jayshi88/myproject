@@ -5,9 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-
+var feedbackPage = require('./routes/feedback');
 var homePage = require('./routes/home');
 var mechanismQuiz = require('./routes/mechanismQuiz');
+var sideEffectQuiz = require('./routes/sideEffectQuiz');
 var users = require('./routes/users');
 var validate = require('./routes/validate');
 
@@ -26,8 +27,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', homePage);
 app.use('/mechanism', mechanismQuiz);
+app.use('/feedback', feedbackPage);
+app.use('/', homePage);
+app.use('/sideEffect', sideEffectQuiz);
 app.use('/users', users);
 app.use('/validateAnswers', validate);
 
